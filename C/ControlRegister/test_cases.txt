@@ -1,0 +1,95 @@
+============================================================
+🔧 Control Register Simulator — Test Cases
+============================================================
+
+Test Case 1: Basic Power + Mode
+--------------------------------
+Input:
+  POWER=ON,MODE=3
+
+Expected Output:
+  POWER    = 1
+  ALARM    = 0
+  MODE     = 3
+  RESERVED = 0
+  Binary   = 00011000 (0x18)
+
+Event Log:
+  POWER set to ON
+  MODE set to 3
+
+
+Test Case 2: Enable Alarm
+--------------------------------
+Input:
+  ALARM=ON
+
+Expected Output:
+  POWER    = 1
+  ALARM    = 1
+  MODE     = 3
+  RESERVED = 0
+  Binary   = 01011000 (0x58)
+
+Event Log:
+  ALARM set to ON
+
+
+Test Case 3: Reserved Bits
+--------------------------------
+Input:
+  RESERVED=5
+
+Expected Output:
+  POWER    = 1
+  ALARM    = 1
+  MODE     = 3
+  RESERVED = 5
+  Binary   = 01011101 (0x5D)
+
+Event Log:
+  RESERVED bits set to 5
+
+
+Test Case 4: Invalid Mode
+--------------------------------
+Input:
+  MODE=10
+
+Expected Output:
+  (Register unchanged)
+  Event Log entry: "Invalid MODE value: 10"
+
+
+Test Case 5: Reset Command
+--------------------------------
+Input:
+  RESET
+
+Expected Output:
+  POWER    = 0
+  ALARM    = 0
+  MODE     = 0
+  RESERVED = 0
+  Binary   = 00000000 (0x00)
+
+Event Log:
+  Register reset to zero.
+
+
+Test Case 6: Event Log Display
+--------------------------------
+Input:
+  LOG
+
+Expected Output:
+  Shows last 10 log entries in circular buffer format.
+
+
+Test Case 7: Exit Program
+--------------------------------
+Input:
+  EXIT
+
+Expected Output:
+  Program terminates with message "Exiting..."
