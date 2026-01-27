@@ -22,4 +22,20 @@
 - Software timer toggles LED every 1 second.
 
 ### System Flow Diagram
+```cpp
+      ADC HW
+        ↓
+ ISR (notify)
+        ↓
+   SensorTask
+        ↓ (queue)
+   ControlTask ────► Motor/Fan
+        │
+        ├──► EventGroup (health)
+        │
+UART ISR ───► StreamBuffer ───► CommsTask
+│
+└──► LoggerTask (mutex protected)
 
+Software Timer ───► Heartbeat LED
+```
