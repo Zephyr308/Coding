@@ -1,0 +1,8 @@
+{
+  "log_file": "scenario/data/sample_logs.txt",
+  "blacklist_file": "scenario/data/blacklist_ips.txt",
+  "report_file": "scenario/reports/report.json",
+  "threshold": 3,
+  "scan_target": "127.0.0.1",
+  "ports": [22, 80, 443]
+}
