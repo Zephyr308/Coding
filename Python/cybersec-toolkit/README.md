@@ -12,6 +12,21 @@
 - Socket Programming
 - Tkinter (GUI)
 
+## 🧪 Real-World Scenario Simulation
+
+Run a simulated SOC workflow:
+
+```bash
+python scenario/run_scenario.py
+```
+What it does:
+- Detects brute-force login attempts
+- Matches IPs against blacklist
+- Generates alerts (JSON report)
+- Scans local system ports
+
+
+
 ## Usage
 ```bash
 pip install -r requirements.txt
