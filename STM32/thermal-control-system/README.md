@@ -1,48 +1,38 @@
-# Thermal Control System (Embedded Firmware Project)
+# 🔥 Thermal Control Embedded System
 
-A real-time embedded thermal control system simulating a consumer hair-styling appliance.
+A real-time embedded firmware system simulating a consumer thermal device (hair-styling appliance).
 
-The system demonstrates:
-- PID-based thermal regulation
+This project demonstrates **industrial embedded system design patterns**, including:
 - Hardware Abstraction Layer (HAL)
-- FreeRTOS-based multitasking
+- PID control with anti-windup
 - Safety-critical fault handling
-- Sensor validation (redundancy + failure detection)
+- State machine architecture
 - Watchdog supervision
-- Structured logging (circular buffer)
+- Circular buffer logging
+- Real-time control loop (RTOS-ready)
 
 ---
 
-## 🧠 System Architecture
+# 🧠 System Architecture
 
-HAL → Control Layer → Safety Layer → Application Layer → RTOS
+## High-Level Design
 
----
+```mermaid
+flowchart TD
+    A[Application Layer<br>State Machine + Main Loop]
+    B[Control Layer<br>PID Controller + Filtering]
+    C[Safety Layer<br>Fault Detection + Sensor Validation]
+    D[HAL Layer<br>ADC / PWM / Time]
+    E[Hardware<br>MCU + Sensors + Heater + Fan]
+    F[Logger<br>Circular Buffer Telemetry]
 
-## ⚙️ Features
-
-### Control
-- PID controller with anti-windup
-- Output ramp limiting
-
-### Safety
-- Over-temperature protection
-- Sensor failure detection
-- Redundant sensor validation
-- Watchdog supervision per task
-
-### System
-- State machine-based control
-- FreeRTOS task separation
-- Timestamped logging system
-
----
-
-## 🎯 Purpose
-
-This project demonstrates embedded firmware design suitable for:
-- Consumer electronics (thermal devices)
-- Safety-critical embedded systems
-- Real-time control applications
-
----
+    A --> B
+    B --> D
+    A --> C
+    C --> D
+    B --> D
+    D --> E
+    A --> F
+    C --> F
+    B --> F
+```
