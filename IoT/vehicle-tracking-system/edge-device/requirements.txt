@@ -1,0 +1,3 @@
+gps
+geopy
+paho-mqtt
