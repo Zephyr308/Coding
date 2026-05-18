@@ -1,0 +1,12 @@
+[Unit]
+Description=Vehicle GPS Tracker
+After=network.target gpsd.service
+
+[Service]
+ExecStart=/usr/bin/python3 /home/pi/vehicle-tracking-system/edge-device/gps_tracker.py
+WorkingDirectory=/home/pi/vehicle-tracking-system/edge-device
+Restart=always
+User=pi
+
+[Install]
+WantedBy=multi-user.target
